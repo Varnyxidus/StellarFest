@@ -2,6 +2,7 @@ package view;
 
 import controller.UserController;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,10 +15,12 @@ import model.User;
 public class Login extends GridPane{
 	Stage stage;
 	TextField email, pass;
-	Label emailLabel, passwordLabel;
+	Label titleLabel, emailLabel, passwordLabel;
 	Button login, goToRegister;
 	
 	public void initialized() {
+		titleLabel = new Label("Welcome back!");
+		titleLabel.setStyle("-fx-font-size: 28px; -fx-font-weight: bold;");
 		emailLabel = new Label("Email:");
 		email = new TextField();
 		email.setPromptText("Insert email");
@@ -30,15 +33,17 @@ public class Login extends GridPane{
 	
 	public void setLayout() {
 		this.setPadding(new Insets(15));
+//		this.setPadding(getInsets());d
         this.setHgap(10);
         this.setVgap(10);
 		
-        this.add(emailLabel, 0, 0);
-		this.add(email, 1, 0);
-		this.add(passwordLabel, 0, 1);
-		this.add(pass, 1, 1);
-		this.add(login, 1, 2);
-		this.add(goToRegister, 1, 3);
+        this.add(titleLabel, 0, 0);
+        this.add(emailLabel, 0, 1);
+		this.add(email, 0, 2);
+		this.add(passwordLabel, 0, 3);
+		this.add(pass, 0, 4);
+		this.add(login, 0, 5);
+		this.add(goToRegister, 0, 6);
 	}
 	
 	public void setButton() {
@@ -47,7 +52,7 @@ public class Login extends GridPane{
 			String password = pass.getText();
 			User user = UserController.Login(mail, password);
 			if (user == null) {
-				System.out.println("FAILED");
+				System.out.println("Login failed!");
 			}
 			else {
 				System.out.println("Login successful!");
