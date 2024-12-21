@@ -12,11 +12,9 @@ public class Registration extends GridPane{
 	TextField emailField, usernameField, passwordField;
 	Button registerButton, loginButton;
 	ComboBox<String> roleComboBox;
-	Label titleLabel, emailLabel, usernameLabel, passwordLabel, roleLabel, statusLabel;
+	Label emailLabel, usernameLabel, passwordLabel, roleLabel, statusLabel;
 	
 	public void initialized() {
-		titleLabel = new Label("Sign Up");
-		titleLabel.setStyle("-fx-font-size: 28px; -fx-font-weight: bold;");
 		emailField = new TextField();
 		emailField.setPromptText("Insert email");
 		usernameField = new TextField();
@@ -40,18 +38,17 @@ public class Registration extends GridPane{
         this.setHgap(10);
         this.setVgap(10);
 		
-        this.add(titleLabel, 0, 0);
-		this.add(emailLabel, 0, 1);
-        this.add(emailField, 0, 2);
-        this.add(usernameLabel, 0, 3);
-        this.add(usernameField, 0, 4);
-        this.add(passwordLabel, 0, 5);
-        this.add(passwordField, 0, 6);
-        this.add(roleLabel, 0, 7);
-        this.add(roleComboBox, 0, 8);
-        this.add(statusLabel, 0, 9);
-        this.add(registerButton, 0, 10);
-        this.add(loginButton, 0, 11);
+		this.add(emailLabel, 0, 0);
+        this.add(emailField, 1, 0);
+        this.add(usernameLabel, 0, 1);
+        this.add(usernameField, 1, 1);
+        this.add(passwordLabel, 0, 2);
+        this.add(passwordField, 1, 2);
+        this.add(roleLabel, 0, 3);
+        this.add(roleComboBox, 1, 3);
+        this.add(statusLabel, 1, 4);
+        this.add(registerButton, 1, 5);
+        this.add(loginButton, 1, 6);
 	}
 	
 	
@@ -84,7 +81,7 @@ public class Registration extends GridPane{
 		initialized();
 		setLayout();
 		setButton();
-		Scene scene = new Scene(this, 320,430);
+		Scene scene = new Scene(this, 320,300);
 		stage.setScene(scene);
 		stage.setTitle("Register");
 		stage.show();

@@ -34,6 +34,14 @@ public class Connect {
 		}
 	}
 	
+	public ResultSet selectUserData(String query) {
+		try {
+			return st.executeQuery(query);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 	public PreparedStatement preparedStatement(String query) {
 		PreparedStatement ps = null;
 		try {
@@ -44,5 +52,14 @@ public class Connect {
 		}
 		return ps;
 	}
+	
+//	public void insertData(String query) {
+//		try {
+//			st.executeUpdate(query);
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			System.out.println("insert data failed!");
+//		}
+//	}
 
 }
