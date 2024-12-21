@@ -1,13 +1,8 @@
-/**
- * 
- */
-/**
- * 
- */
 module StellarFest {
-	exports main;
-	requires java.sql;
-	requires javafx.fxml;
-	requires javafx.controls;
 	requires javafx.graphics;
+	requires javafx.controls;
+	requires javafx.base;
+	requires java.sql;
+	exports main;
+	opens model to javafx.base;
 }

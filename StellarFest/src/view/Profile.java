@@ -14,14 +14,12 @@ import model.User;
 public class Profile extends GridPane {
 		Stage stage;
 		TextField email, name, oldPass, newPass;
-		Label titleLabel, nameLabel, emailLabel, passwordLabel;
-		Button edit, update, backTo, navigate;
+		Label nameLabel, emailLabel, passwordLabel;
+		Button edit, update, backTo;
 		
 		private User user;
 		
 		public void initialized() {
-			titleLabel = new Label("Profile");
-			titleLabel.setStyle("-fx-font-size: 28px; -fx-font-weight: bold;");
 			nameLabel = new Label("Name:  " + user.getUser_name());
 			name = new TextField();
 			name.setPromptText("Change Name");
@@ -30,13 +28,9 @@ public class Profile extends GridPane {
 			email.setPromptText("Change Email");
 			passwordLabel = new Label("Password:  *****");
 			oldPass = new PasswordField();
-			oldPass.setPromptText("Old password");
 			newPass = new PasswordField();
-			newPass.setPromptText("New password");
 			edit = new Button("Edit");
 			update = new Button("Save Changes");
-			backTo = new Button("Back");
-			navigate = new Button("Another page..");
 		}
 		
 		public void setLayout() {
@@ -44,53 +38,34 @@ public class Profile extends GridPane {
 	        this.setHgap(10);
 	        this.setVgap(10);
 			
-	        this.add(titleLabel, 0, 0);
-	        this.add(nameLabel, 0, 1);
-			this.add(emailLabel, 0, 3);
-			this.add(passwordLabel, 0, 5);
-			this.add(edit, 0, 8);
-			this.add(navigate, 0, 9);
+	        this.add(nameLabel, 0, 0);
+			this.add(emailLabel, 0, 2);
+			this.add(passwordLabel, 0, 4);
+			this.add(edit, 1, 7);
+//			this.add(goToRegister, 1, 3);
 		}
 		
 		public void setButton() {
 			update.setOnAction(e ->{
-				String userName = name.getText();
-				String mail = email.getText();
-				String oldPassword = oldPass.getText();
-				String newPassword = newPass.getText();
-				User result = UserController.changeProfile(user.getUser_id(),userName, mail, oldPassword, newPassword);
-				if (result != null) {
-					System.out.println("FAILED");
-				}
-				else {
-					System.out.println("Update successful!");
-					new Profile(stage, result);
-				}
+//				String mail = email.getText();
+//				String password = pass.getText();
+//				User user = UserController.Login(mail, password);
+//				if (user == null) {
+//					System.out.println("FAILED");
+//				}
+//				else {
+//					System.out.println("WELCOME");
+//				}
 			});
 			edit.setOnAction(e ->{
-				this.add(name, 0, 2);
-				this.add(email, 0, 4);
-				this.add(oldPass, 0, 6);
-				this.add(newPass, 0, 7);
-				this.add(update, 0, 8);
-				this.getChildren().remove(navigate);
-				this.getChildren().remove(edit);
-				this.add(backTo, 0, 9);
+				this.add(name, 1, 1);
+				this.add(email, 1, 3);
+				this.add(oldPass, 1, 5);
+				this.add(newPass, 1, 6);
+				this.add(update, 1, 8);
 				
 			});
-			backTo.setOnAction(e ->{
-				this.getChildren().remove(name);
-				this.getChildren().remove(email);
-				this.getChildren().remove(oldPass);
-				this.getChildren().remove(newPass);
-				this.getChildren().remove(update);
-				this.getChildren().remove(backTo);
-				this.add(edit, 0, 8);
-				this.add(navigate, 0, 9);
-			});
-			navigate.setOnAction(e ->{
-//				navigate to another page;				
-			});
+//				navigate to another page;
 		}
 		
 		public Profile(Stage stage, User user) {
@@ -99,9 +74,9 @@ public class Profile extends GridPane {
 			initialized();
 			setLayout();
 			setButton();
-			Scene scene = new Scene(this, 300,400);
+			Scene scene = new Scene(this, 500,400);
 			stage.setScene(scene);
-			stage.setTitle("User Profile");
+			stage.setTitle("Login");
 			stage.show();
 		}
 	}
